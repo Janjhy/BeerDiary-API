@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31727.386
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerDiary.Domain", "BeerDiary.Domain\BeerDiary.Domain.csproj", "{C0FD07DE-4646-415E-98CE-49FC5E8A8123}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerDiary.Api", "BeerDiary.Api\BeerDiary.Api.csproj", "{EE17A224-DDD5-4EAE-B6DF-52B46B3B9263}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFBC9F7A-6F76-4E5C-8DA0-EE2DBEBC2E98} = {AFBC9F7A-6F76-4E5C-8DA0-EE2DBEBC2E98}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerDiary.DataAccess", "BeerDiary.DataAccess\BeerDiary.DataAccess.csproj", "{AFBC9F7A-6F76-4E5C-8DA0-EE2DBEBC2E98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0FD07DE-4646-415E-98CE-49FC5E8A8123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0FD07DE-4646-415E-98CE-49FC5E8A8123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0FD07DE-4646-415E-98CE-49FC5E8A8123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0FD07DE-4646-415E-98CE-49FC5E8A8123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE17A224-DDD5-4EAE-B6DF-52B46B3B9263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE17A224-DDD5-4EAE-B6DF-52B46B3B9263}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE17A224-DDD5-4EAE-B6DF-52B46B3B9263}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE17A224-DDD5-4EAE-B6DF-52B46B3B9263}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFBC9F7A-6F76-4E5C-8DA0-EE2DBEBC2E98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFBC9F7A-6F76-4E5C-8DA0-EE2DBEBC2E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFBC9F7A-6F76-4E5C-8DA0-EE2DBEBC2E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFBC9F7A-6F76-4E5C-8DA0-EE2DBEBC2E98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E470B0C7-B425-4B5D-B6A3-5684C795AD8E}
+	EndGlobalSection
+EndGlobal
