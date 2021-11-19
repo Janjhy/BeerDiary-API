@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31727.386
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerDiary.Domain", "BeerDiary.Domain\BeerDiary.Domain.csproj", "{C0FD07DE-4646-415E-98CE-49FC5E8A8123}"
 EndProject
@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerDiary.Api", "BeerDiary.
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerDiary.DataAccess", "BeerDiary.DataAccess\BeerDiary.DataAccess.csproj", "{AFBC9F7A-6F76-4E5C-8DA0-EE2DBEBC2E98}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityTesting", "..\IdentityTesting\IdentityTesting\IdentityTesting.csproj", "{DD7642FD-E168-4026-899F-BAFC34A8BADE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,10 @@ Global
 		{AFBC9F7A-6F76-4E5C-8DA0-EE2DBEBC2E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFBC9F7A-6F76-4E5C-8DA0-EE2DBEBC2E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFBC9F7A-6F76-4E5C-8DA0-EE2DBEBC2E98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD7642FD-E168-4026-899F-BAFC34A8BADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD7642FD-E168-4026-899F-BAFC34A8BADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD7642FD-E168-4026-899F-BAFC34A8BADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD7642FD-E168-4026-899F-BAFC34A8BADE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
