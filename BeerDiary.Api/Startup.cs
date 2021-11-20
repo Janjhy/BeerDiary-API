@@ -47,7 +47,12 @@ namespace BeerDiary.Api
             
             services.AddControllers();
 
-            //services.AddDbContext<>
+            services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
+            {
+                options.Audience = "beerdiary-api";
+                options.Authority = "https://localhost:7226"; //TODO: Extract string
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +66,8 @@ namespace BeerDiary.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
