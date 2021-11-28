@@ -3,7 +3,7 @@ using BeerDiary.DataAccess.Services;
 using BeerDiary.Domain.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
+using System.IdentityModel.Tokens.Jwt;
 
 namespace BeerDiary.Api.Controllers
 {
@@ -18,12 +18,31 @@ namespace BeerDiary.Api.Controllers
             _beerService = beerService;
         }
 
+        private string GetSubject(Microsoft.AspNetCore.Http.HttpRequest req)
+        {
+            var token = req.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            var handler = new JwtSecurityTokenHandler();
+            var decodedToken = handler.ReadJwtToken(token);
+            var subject = decodedToken.Subject;
+            return subject;
+        }
+
         // GET api/<ReviewsController>
         [HttpGet]
         public async Task<ActionResult<List<Review>>> Get()
         {
-            int userId = 1;
-            return await _beerService.GetReviewsByUserId(userId);
+            var subject = GetSubject(Request);
+            int userId;
+            try
+            {
+                userId = int.Parse(subject);
+                return await _beerService.GetReviewsByUserId(userId);
+            } catch
+            {
+                System.Diagnostics.Debug.WriteLine("Parsing user id error.");
+                return NoContent();
+            }
+           
         }
 
         // GET api/<ReviewsController>/<id>
@@ -37,37 +56,62 @@ namespace BeerDiary.Api.Controllers
         [HttpGet("beers")]
         public async Task<ActionResult<List<Beer>>> GetBeers()
         {
-            int userId = 1;
-            return await _beerService.GetAllBeersReviewdByUser(userId);
+            var subject = GetSubject(Request);
+            int userId;
+            try
+            {
+                userId = int.Parse(subject);
+                return await _beerService.GetAllBeersReviewdByUser(userId);
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("Parsing user id error.");
+                return NoContent();
+            }
+            
         }
 
         // POST api/<ReviewsController>
         [HttpPost]
         public async Task<ActionResult<Review>> Post(Review newReview)
         {
-            int userId = 1;
-            var review = await _beerService.CreateReview(newReview, userId);
+            var subject = GetSubject(Request);
+            int userId;
+            try
+            {
+                userId = int.Parse(subject);
+                var review = await _beerService.CreateReview(newReview, userId);
 
-            return CreatedAtAction(nameof(GetById), new { id = review.Id }, review);
+                return CreatedAtAction(nameof(GetById), new { id = review.Id }, review);
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("Parsing user id error.");
+                return NoContent();
+            }
         }
-
-        // PUT api/<ReviewsController>/5
-        /*[HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }*/
 
         // DELETE api/<ReviewsController>/<id>
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            int userId = 1;
-            bool isDeleted = await _beerService.DeleteReview(id, userId);
-            if(isDeleted)
+            var subject = GetSubject(Request);
+            int userId;
+            try
             {
-                return NoContent();
+                userId = int.Parse(subject);
+                bool isDeleted = await _beerService.DeleteReview(id, userId);
+                if (isDeleted)
+                {
+                    return NoContent();
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("Parsing user id error.");
+                return NotFound();
+            }
         }
     }
 }

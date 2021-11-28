@@ -3,7 +3,7 @@ using BeerDiary.DataAccess.Services;
 using BeerDiary.Domain.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
+using Microsoft.AspNetCore.Cors;
 
 namespace BeerDiary.Api.Controllers
 {
@@ -18,7 +18,7 @@ namespace BeerDiary.Api.Controllers
             _beerService = beerService;
         }
 
-        // GET: api/<BeersController>
+        // GET: api/<BeersController>     
         [HttpGet]
         public async Task<ActionResult<List<Beer>>> Get()
         {

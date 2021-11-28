@@ -44,7 +44,9 @@ namespace BeerDiary.Api
             //builder.Password = beerDiaryCred["Password"];
 
             services.AddDbContext<BeerDiaryContext>(opt => opt.UseSqlServer(builder.ConnectionString));
-            
+
+            services.AddCors();
+
             services.AddControllers();
 
             services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
@@ -67,6 +69,7 @@ namespace BeerDiary.Api
 
             app.UseRouting();
 
+            app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());
             app.UseAuthentication();
 
             app.UseAuthorization();
