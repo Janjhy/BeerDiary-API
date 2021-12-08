@@ -32,16 +32,10 @@ namespace BeerDiary.Api
 
             services.AddScoped<BeerService>();
 
-            //var builder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("BeerDiary"));
             var builder = new SqlConnectionStringBuilder();
             builder.ConnectionString = "Data Source=DESKTOP-AFVT8DP\\SQLEXPRESS02;Initial Catalog=master;Integrated Security=True";
 
             IConfigurationSection beerDiaryCred = Configuration.GetSection("BeerDiaryCred");
-
-            //builder.UserID = beerDiaryCred["UserId"];
-            //builder.UserID = "DESKTOP-AFVT8DP\\proje";
-            //builder.Password = "";
-            //builder.Password = beerDiaryCred["Password"];
 
             services.AddDbContext<BeerDiaryContext>(opt => opt.UseSqlServer(builder.ConnectionString));
 
@@ -52,7 +46,7 @@ namespace BeerDiary.Api
             services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
             {
                 options.Audience = "beerdiary-api";
-                options.Authority = "https://localhost:7226"; //TODO: Extract string
+                options.Authority = "https://localhost:7226"; /
             });
 
         }
